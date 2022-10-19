@@ -1,0 +1,12 @@
+Places2 Challenge dataset
+Bolei Zhou
+
+http://places2.csail.mit.edu/download-private.html
+
+
+
+Paris StreetView Dataset
+Deepak Pathak
+
+https://drive.google.com/drive/folders/0ByeCo8E6DMZ4QUJEWGRWMm96RE0?resourcekey=0-1pSs0j--b9OBlGzxbo6PUw&usp=sharing
+
