@@ -61,7 +61,7 @@ class Dataset(torch.utils.data.Dataset):
         if self.mask_type == 0:
             mask_index = random.randint(0, len(self.mask_data) - 1)
             mask = imread(self.mask_data[mask_index])
-            mask = (mask > 0).astype(np.uint8)       # threshold due to interpolation
+            mask = (mask > 50).astype(np.uint8)       # threshold due to interpolation
             mask = self.resize(mask, False)
             if self.mask_reverse:
                 return (1 - mask) * 255
@@ -78,7 +78,7 @@ class Dataset(torch.utils.data.Dataset):
         if self.mask_type == 2:
             mask_index = index
             mask = imread(self.mask_data[mask_index])
-            mask = (mask > 0).astype(np.uint8)       # threshold due to interpolation
+            mask = (mask > 50).astype(np.uint8)       # threshold due to interpolation
             mask = self.resize(mask, False)
             if self.mask_reverse:
                 return (1 - mask) * 255
