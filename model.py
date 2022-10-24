@@ -75,7 +75,7 @@ class RFRNetModel():
                     save_ckpt('{:s}/g_{:d}.pth'.format(save_path, self.iter ), [('generator', self.G)], [('optimizer_G', self.optm_G)], self.iter)
         if not os.path.exists('{:s}'.format(save_path)):
             os.makedirs('{:s}'.format(save_path))
-            save_ckpt('{:s}/g_{:s}.pth'.format(save_path, "final"), [('generator', self.G)], [('optimizer_G', self.optm_G)], self.iter)
+        save_ckpt('{:s}/g_{:s}.pth'.format(save_path, "final"), [('generator', self.G)], [('optimizer_G', self.optm_G)], self.iter)
     def test(self, test_loader, result_save_path):
         self.G.eval()
         for para in self.G.parameters():
@@ -84,7 +84,7 @@ class RFRNetModel():
         for items in test_loader:
             gt_images, masks = self.__cuda__(*items)
             masked_images = gt_images * masks
-            masks = torch.cat([masks]*3, dim = 1)
+            masks = torch.cat([masks], dim = 1)
             fake_B, mask = self.G(masked_images, masks)
             comp_B = fake_B * (1 - masks) + gt_images * masks
             if not os.path.exists('{:s}/results'.format(result_save_path)):
