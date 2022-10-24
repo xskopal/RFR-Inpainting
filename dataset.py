@@ -61,12 +61,12 @@ class Dataset(torch.utils.data.Dataset):
         if self.mask_type == 0:
             mask_index = random.randint(0, len(self.mask_data) - 1)
             mask = imread(self.mask_data[mask_index])
-            mask = (mask > 50).astype(np.uint8)       # threshold due to interpolation
+            mask = (mask > 50).astype(np.float32)       # threshold due to interpolation
             mask = self.resize(mask, False)
-            if self.mask_reverse:
+            """if self.mask_reverse:
                 return (1 - mask) * 255
             else:
-                return mask * 255
+                return mask * 255"""
         #generate random mask
         if self.mask_type == 1:
             mask = 1 - generate_stroke_mask([self.target_size, self.target_size])
@@ -78,12 +78,12 @@ class Dataset(torch.utils.data.Dataset):
         if self.mask_type == 2:
             mask_index = index
             mask = imread(self.mask_data[mask_index])
-            mask = (mask > 50).astype(np.uint8)       # threshold due to interpolation
+            mask = (mask > 50).astype(np.float32)       # threshold due to interpolation
             mask = self.resize(mask, False)
-            if self.mask_reverse:
+            """if self.mask_reverse:
                 return (1 - mask) * 255
             else:
-                return mask * 255
+                return mask * 255"""
 
     def resize(self, img, aspect_ratio_kept = True, fixed_size = False, centerCrop=False):
         
